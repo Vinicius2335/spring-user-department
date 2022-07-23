@@ -6,7 +6,6 @@ import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 @AllArgsConstructor
 @Service
@@ -17,11 +16,21 @@ public class UserService {
         return userRepository.findAll();
     }
 
-    public Optional<User> findById(Long id) {
-        return userRepository.findById(id);
+    public User findById(Long id) throws Exception {
+        return userRepository.findById(id).orElseThrow(() -> new Exception("User ID not found"));
     }
 
     public void save(User user){
         userRepository.save(user);
     }
+
+    public void replace(User user) {
+        userRepository.save(user);
+    }
+
+    public void delete(Long id) throws Exception {
+        User user = findById(id);
+        userRepository.delete(user);
+    }
+
 }
