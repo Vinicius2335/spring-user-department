@@ -1,9 +1,13 @@
 package com.projetinho.userDept.service;
 
+import com.projetinho.userDept.mapper.UserMapper;
 import com.projetinho.userDept.model.User;
 import com.projetinho.userDept.repository.UserRepository;
+import com.projetinho.userDept.requests.UserPostRequestBody;
+import com.projetinho.userDept.requests.UserPutRequestBody;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -16,19 +20,25 @@ public class UserService {
         return userRepository.findAll();
     }
 
-    public User findById(Long id) throws Exception {
-        return userRepository.findById(id).orElseThrow(() -> new Exception("User ID not found"));
+    public User findById(Long id) {
+        return userRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("User ID not found"));
     }
 
-    public void save(User user){
+    public void save(UserPostRequestBody userPostRequestBodyser){
+        User user = UserMapper.INSTANCE.toUser(userPostRequestBodyser);
         userRepository.save(user);
     }
 
-    public void replace(User user) {
+    @Transactional(rollbackFor = Exception.class)
+    public void replace(UserPutRequestBody userPutRequestBody) {
+        User userFindind = findById(userPutRequestBody.getIdUser());
+        User user = UserMapper.INSTANCE.toUser(userPutRequestBody);
+
+        user.setIdUser(userFindind.getIdUser());
         userRepository.save(user);
     }
 
-    public void delete(Long id) throws Exception {
+    public void delete(Long id) {
         User user = findById(id);
         userRepository.delete(user);
     }
