@@ -4,7 +4,6 @@ import com.projetinho.userDept.model.User;
 import com.projetinho.userDept.requests.UserPostRequestBody;
 import com.projetinho.userDept.requests.UserPutRequestBody;
 import com.projetinho.userDept.service.UserService;
-import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -14,7 +13,8 @@ import javax.validation.Valid;
 import java.util.List;
 
 @RestController
-@RequestMapping("users")@RequiredArgsConstructor
+@RequestMapping("users")
+@RequiredArgsConstructor
 public class UserController {
     private final UserService userService;
 
@@ -23,7 +23,6 @@ public class UserController {
      return new ResponseEntity<>(userService.findAll(), HttpStatus.OK);
     }
 
-    // TODO CRIAR NOSSA PROPRIA EXCEPTION
     @GetMapping(path = "/{id}")
     public ResponseEntity<User> findById(@PathVariable Long id) {
         return ResponseEntity.ok(userService.findById(id));

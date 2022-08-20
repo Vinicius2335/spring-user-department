@@ -1,5 +1,6 @@
 package com.projetinho.userDept.service;
 
+import com.projetinho.userDept.exception.BadRequestException;
 import com.projetinho.userDept.mapper.UserMapper;
 import com.projetinho.userDept.model.User;
 import com.projetinho.userDept.repository.UserRepository;
@@ -21,7 +22,7 @@ public class UserService {
     }
 
     public User findById(Long id) {
-        return userRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("User ID not found"));
+        return userRepository.findById(id).orElseThrow(() -> new BadRequestException("User ID not found"));
     }
 
     public void save(UserPostRequestBody userPostRequestBodyser){
