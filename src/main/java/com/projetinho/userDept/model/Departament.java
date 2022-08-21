@@ -1,5 +1,6 @@
 package com.projetinho.userDept.model;
 
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.*;
 
 import javax.persistence.*;
@@ -13,6 +14,8 @@ import javax.persistence.*;
 public class Departament {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Schema(description = "The departament ID", required = true)
     private Long idDepartament;
+    @Schema(description = "The departament name")
     private String name;
 }
