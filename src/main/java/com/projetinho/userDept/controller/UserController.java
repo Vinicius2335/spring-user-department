@@ -25,7 +25,12 @@ public class UserController {
 
     @GetMapping(path = "/{id}")
     public ResponseEntity<User> findById(@PathVariable Long id) {
-        return ResponseEntity.ok(userService.findById(id));
+        return new ResponseEntity<>(userService.findById(id), HttpStatus.OK);
+    }
+
+    @GetMapping(path = "/find")
+    public ResponseEntity<List<User>> findByName(@RequestParam String name){
+        return new ResponseEntity<>(userService.findByName(name), HttpStatus.OK);
     }
 
     @PostMapping

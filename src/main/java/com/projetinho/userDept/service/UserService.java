@@ -25,6 +25,11 @@ public class UserService {
         return userRepository.findById(id).orElseThrow(() -> new BadRequestException("User ID not found"));
     }
 
+    public List<User> findByName(String name){
+        return userRepository.findByName(name);
+    }
+
+    @Transactional(rollbackFor = Exception.class)
     public void save(UserPostRequestBody userPostRequestBodyser){
         User user = UserMapper.INSTANCE.toUser(userPostRequestBodyser);
         userRepository.save(user);
@@ -32,10 +37,10 @@ public class UserService {
 
     @Transactional(rollbackFor = Exception.class)
     public void replace(UserPutRequestBody userPutRequestBody) {
-        User userFindind = findById(userPutRequestBody.getIdUser());
+        User userFind = findById(userPutRequestBody.getIdUser());
         User user = UserMapper.INSTANCE.toUser(userPutRequestBody);
 
-        user.setIdUser(userFindind.getIdUser());
+        user.setIdUser(userFind.getIdUser());
         userRepository.save(user);
     }
 

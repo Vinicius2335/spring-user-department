@@ -8,6 +8,7 @@ import com.projetinho.userDept.requests.DepartamentPostRequest;
 import com.projetinho.userDept.requests.DepartamentPutRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -25,15 +26,20 @@ public class DepartamentService {
                 .orElseThrow(() -> new BadRequestException("Departament Id not found"));
     }
 
+    @Transactional(rollbackFor = Exception.class)
     public void save(DepartamentPostRequest departament){
         Departament toDepartament = DepartamentMapper.INSTANCE.toDepartament(departament);
         departamentRepository.save(toDepartament);
     }
 
+    @Transactional(rollbackFor = Exception.class)
     public void replace(DepartamentPutRequest departament){
+        System.out.println(departament.getIdDepartament());
+        Departament departamentFind = findByIdOrThrowsBadRequestException(departament.getIdDepartament());
         Departament toDepartament = DepartamentMapper.INSTANCE.toDepartament(departament);
-        Departament replacedDepartament = findByIdOrThrowsBadRequestException(toDepartament.getIdDepartament());
-         departamentRepository.save(replacedDepartament);
+
+        toDepartament.setIdDepartament(departamentFind.getIdDepartament());
+        departamentRepository.save(toDepartament);
     }
 
     public void delete(Long id){

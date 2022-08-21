@@ -24,12 +24,12 @@ public class DepartamentController {
     }
 
     @GetMapping(path = "/{id}")
-    public ResponseEntity<Departament> listById(@PathVariable Long idDepartament){
-        return new ResponseEntity<>(departamentService.findByIdOrThrowsBadRequestException(idDepartament), HttpStatus.OK);
+    public ResponseEntity<Departament> listById(@PathVariable Long id){
+        return new ResponseEntity<>(departamentService.findByIdOrThrowsBadRequestException(id), HttpStatus.OK);
     }
 
     @PostMapping
-    public ResponseEntity<Departament>  save(@RequestBody @Valid DepartamentPostRequest departament){
+    public ResponseEntity<Departament> save(@RequestBody @Valid DepartamentPostRequest departament){
         departamentService.save(departament);
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
@@ -41,8 +41,8 @@ public class DepartamentController {
     }
 
     @DeleteMapping(path = "/{id}")
-    public ResponseEntity<Departament> delete(@PathVariable Long idDepartament){
-        departamentService.delete(idDepartament);
+    public ResponseEntity<Departament> delete(@PathVariable Long id){
+        departamentService.delete(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 }
