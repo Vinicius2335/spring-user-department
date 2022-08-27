@@ -1,8 +1,8 @@
 package com.projetinho.userDept.mapper;
 
 import com.projetinho.userDept.model.Departament;
-import com.projetinho.userDept.requests.DepartamentPostRequest;
-import com.projetinho.userDept.requests.DepartamentPutRequest;
+import com.projetinho.userDept.requests.DepartamentPostRequestBody;
+import com.projetinho.userDept.requests.DepartamentPutRequestBody;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
 
@@ -10,6 +10,6 @@ import org.mapstruct.factory.Mappers;
 public abstract class DepartamentMapper {
     public static final DepartamentMapper INSTANCE = Mappers.getMapper(DepartamentMapper.class);
 
-    public abstract Departament toDepartament(DepartamentPostRequest departamentPostRequest);
-    public abstract Departament toDepartament(DepartamentPutRequest departamentPutRequest);
+    public abstract Departament toDepartament(DepartamentPostRequestBody departamentPostRequestBody);
+    public abstract Departament toDepartament(DepartamentPutRequestBody departamentPutRequestBody);
 }

@@ -2,16 +2,15 @@ package com.projetinho.userDept.requests;
 
 import com.projetinho.userDept.model.Departament;
 import io.swagger.v3.oas.annotations.media.Schema;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
 @Data
-@AllArgsConstructor
+@AllArgsConstructor(access = AccessLevel.PRIVATE)
 @NoArgsConstructor
+@Builder
 public class UserPostRequestBody {
     @NotNull(message = "The user name cannot be null")
     @NotEmpty(message = "The user name cannot be empty")

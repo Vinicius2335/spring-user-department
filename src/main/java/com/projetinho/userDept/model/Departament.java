@@ -4,6 +4,7 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.*;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
 
 @Data
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
@@ -16,6 +17,8 @@ public class Departament {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Schema(description = "The departament ID", required = true)
     private Long idDepartament;
+
+    @NotEmpty(message = "The departament name cannot be empty")
     @Schema(description = "The departament name")
     private String name;
 }

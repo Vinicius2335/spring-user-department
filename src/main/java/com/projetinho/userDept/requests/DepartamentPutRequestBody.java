@@ -1,18 +1,17 @@
 package com.projetinho.userDept.requests;
 
 import io.swagger.v3.oas.annotations.media.Schema;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.validation.constraints.NegativeOrZero;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
 @Data
-@AllArgsConstructor
+@AllArgsConstructor(access = AccessLevel.PRIVATE)
 @NoArgsConstructor
-public class DepartamentPutRequest {
+@Builder
+public class DepartamentPutRequestBody {
 
     @NegativeOrZero(message = "The departament id cannot be Zero or Negative")
     @NotNull(message = "The departament id cannot be null")

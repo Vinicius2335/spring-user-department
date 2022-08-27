@@ -4,8 +4,8 @@ import com.projetinho.userDept.exception.BadRequestException;
 import com.projetinho.userDept.mapper.DepartamentMapper;
 import com.projetinho.userDept.model.Departament;
 import com.projetinho.userDept.repository.DepartamentRepository;
-import com.projetinho.userDept.requests.DepartamentPostRequest;
-import com.projetinho.userDept.requests.DepartamentPutRequest;
+import com.projetinho.userDept.requests.DepartamentPostRequestBody;
+import com.projetinho.userDept.requests.DepartamentPutRequestBody;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -27,13 +27,13 @@ public class DepartamentService {
     }
 
     @Transactional(rollbackFor = Exception.class)
-    public void save(DepartamentPostRequest departament){
+    public Departament save(DepartamentPostRequestBody departament){
         Departament toDepartament = DepartamentMapper.INSTANCE.toDepartament(departament);
-        departamentRepository.save(toDepartament);
+        return departamentRepository.save(toDepartament);
     }
 
     @Transactional(rollbackFor = Exception.class)
-    public void replace(DepartamentPutRequest departament){
+    public void replace(DepartamentPutRequestBody departament){
         System.out.println(departament.getIdDepartament());
         Departament departamentFind = findByIdOrThrowsBadRequestException(departament.getIdDepartament());
         Departament toDepartament = DepartamentMapper.INSTANCE.toDepartament(departament);

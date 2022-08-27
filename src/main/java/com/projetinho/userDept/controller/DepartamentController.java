@@ -1,8 +1,8 @@
 package com.projetinho.userDept.controller;
 
 import com.projetinho.userDept.model.Departament;
-import com.projetinho.userDept.requests.DepartamentPostRequest;
-import com.projetinho.userDept.requests.DepartamentPutRequest;
+import com.projetinho.userDept.requests.DepartamentPostRequestBody;
+import com.projetinho.userDept.requests.DepartamentPutRequestBody;
 import com.projetinho.userDept.service.DepartamentService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
@@ -43,7 +43,7 @@ public class DepartamentController {
             @ApiResponse(responseCode = "201", description = "Successful Operation"),
             @ApiResponse(responseCode = "400", description = "When the departament not saved in the database")
     })
-    public ResponseEntity<Departament> save(@RequestBody @Valid DepartamentPostRequest departament){
+    public ResponseEntity<Departament> save(@RequestBody @Valid DepartamentPostRequestBody departament){
         departamentService.save(departament);
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
@@ -54,7 +54,7 @@ public class DepartamentController {
             @ApiResponse(responseCode = "204", description = "Successful Operation"),
             @ApiResponse(responseCode = "400", description = "When the departament not exists in the database")
     })
-    public ResponseEntity<Departament> replace(@RequestBody @Valid DepartamentPutRequest departament){
+    public ResponseEntity<Departament> replace(@RequestBody @Valid DepartamentPutRequestBody departament){
         departamentService.replace(departament);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }

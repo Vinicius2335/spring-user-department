@@ -30,9 +30,9 @@ public class UserService {
     }
 
     @Transactional(rollbackFor = Exception.class)
-    public void save(UserPostRequestBody userPostRequestBodyser){
+    public User save(UserPostRequestBody userPostRequestBodyser){
         User user = UserMapper.INSTANCE.toUser(userPostRequestBodyser);
-        userRepository.save(user);
+        return userRepository.save(user);
     }
 
     @Transactional(rollbackFor = Exception.class)
