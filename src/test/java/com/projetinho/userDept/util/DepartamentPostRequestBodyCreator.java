@@ -10,7 +10,6 @@ public class DepartamentPostRequestBodyCreator {
     }
 
     public static DepartamentPostRequestBody createdDepartamentPostRequestBodyIncorrect(){
-        return DepartamentPostRequestBody.builder()
-                .build();
+        return DepartamentPostRequestBody.builder().build();
     }
 }
