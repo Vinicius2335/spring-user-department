@@ -11,7 +11,7 @@ import lombok.*;
 public class UserPutRequestBody {
     @Schema(description = "This is the User Id", required = true)
     private Long idUser;
-    @Schema(description = "This is the User name")
+    @Schema(description = "This is the User name", required = true)
     private String name;
     @Schema(description = "This is the User email", example = "example@gmail.com")
     private String email;

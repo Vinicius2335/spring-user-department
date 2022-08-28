@@ -10,4 +10,11 @@ public class UserPostRequestBodyCreator {
                 .name(UserCreator.createdUserForSave().getName())
                 .build();
     }
+
+    public static UserPostRequestBody createdUserPostRequestBodyInvalid(){
+        return UserPostRequestBody.builder()
+                .departament(UserCreator.createUserNotFound().getDepartament())
+                .email(UserCreator.createUserNotFound().getEmail())
+                .build();
+    }
 }

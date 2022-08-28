@@ -86,7 +86,7 @@ class DepartamentControllerTest {
     }
 
     @Test
-    @DisplayName("listById throws BadRequest when departament not found")
+    @DisplayName("listById throws BadRequestException when departament not found")
     void listById_ThrowBadRequest_WhenDepartamentNotFound(){
         BDDMockito.when(departamentServiceMock.findByIdOrThrowsBadRequestException(ArgumentMatchers.anyLong()))
                 .thenThrow(BadRequestException.class);
@@ -108,7 +108,7 @@ class DepartamentControllerTest {
     }
 
     @Test
-    @DisplayName("save Throws BadRequestException When Departament Not Save")
+    @DisplayName("save Throws ConstraintViolationException When Departament Not Save")
     void save_ThrowsBadRequestException_WhenDepartamentNotSave(){
         BDDMockito.when(departamentServiceMock.save(ArgumentMatchers.any(DepartamentPostRequestBody.class)))
                 .thenThrow(ConstraintViolationException.class);

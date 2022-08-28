@@ -11,4 +11,11 @@ public class UserPutRequestBodyCreator {
                 .name(UserCreator.createUserForUpdate().getName())
                 .build();
     }
+    public static UserPutRequestBody createUserPutRequestBodyInvalid(){
+        return UserPutRequestBody.builder()
+                .departament(UserCreator.createdUserValid().getDepartament())
+                .email(UserCreator.createdUserValid().getEmail())
+                .idUser(UserCreator.createdUserValid().getIdUser())
+                .build();
+    }
 }
