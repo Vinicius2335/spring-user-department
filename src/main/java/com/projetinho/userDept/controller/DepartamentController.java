@@ -54,7 +54,7 @@ public class DepartamentController {
             @ApiResponse(responseCode = "204", description = "Successful Operation"),
             @ApiResponse(responseCode = "400", description = "When the departament not exists in the database")
     })
-    public ResponseEntity<Departament> replace(@RequestBody @Valid DepartamentPutRequestBody departament){
+    public ResponseEntity<Void> replace(@RequestBody @Valid DepartamentPutRequestBody departament){
         departamentService.replace(departament);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
@@ -65,7 +65,7 @@ public class DepartamentController {
             @ApiResponse(responseCode = "204", description = "Successful Operation"),
             @ApiResponse(responseCode = "400", description = "When the departament not exists in the database")
     })
-    public ResponseEntity<Departament> delete(@PathVariable Long id){
+    public ResponseEntity<Void> delete(@PathVariable Long id){
         departamentService.delete(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }

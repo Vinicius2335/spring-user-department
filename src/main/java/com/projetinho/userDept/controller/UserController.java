@@ -24,7 +24,7 @@ public class UserController {
     @GetMapping
     @Operation(summary = "Find all User", description = "List all users in given database", tags = {"User"})
     public ResponseEntity<List<User>> findAll() {
-     return new ResponseEntity<>(userService.findAll(), HttpStatus.OK);
+        return new ResponseEntity<>(userService.findAll(), HttpStatus.OK);
     }
 
     @GetMapping(path = "/{id}")
@@ -38,8 +38,9 @@ public class UserController {
     }
 
     @GetMapping(path = "/find")
-    @Operation(summary = "Find By Name User", description = "List all user with the name in the given database", tags = {"User"})
-    public ResponseEntity<List<User>> findByName(@RequestParam String name){
+    @Operation(summary = "Find By Name User", description = "List all user with the name in the given database",
+            tags = {"User"})
+    public ResponseEntity<List<User>> findByName(@RequestParam String name) {
         return new ResponseEntity<>(userService.findByName(name), HttpStatus.OK);
     }
 
@@ -60,7 +61,7 @@ public class UserController {
             @ApiResponse(responseCode = "204", description = "Successful Operation"),
             @ApiResponse(responseCode = "400", description = "When the user not founded in the database for replace")
     })
-    public ResponseEntity<User> replace(@RequestBody UserPutRequestBody user) {
+    public ResponseEntity<Void> replace(@RequestBody UserPutRequestBody user) {
         userService.replace(user);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
@@ -71,7 +72,7 @@ public class UserController {
             @ApiResponse(responseCode = "204", description = "Successful Operation"),
             @ApiResponse(responseCode = "400", description = "When the user not founded in the database")
     })
-    public ResponseEntity<User> delete(@PathVariable Long id) {
+    public ResponseEntity<Void> delete(@PathVariable Long id) {
         userService.delete(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }

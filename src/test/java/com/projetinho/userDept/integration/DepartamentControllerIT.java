@@ -30,7 +30,7 @@ import static org.junit.jupiter.api.Assertions.*;
 @AutoConfigureTestDatabase
 @DirtiesContext(classMode = DirtiesContext.ClassMode.BEFORE_EACH_TEST_METHOD)
 @DisplayName("Test for departament integration")
-class DepartamentControllerIntegrationTest {
+class DepartamentControllerIT {
     @Autowired
     private TestRestTemplate testRestTemplate;
     @Autowired
@@ -79,7 +79,7 @@ class DepartamentControllerIntegrationTest {
                 HttpMethod.GET,
                 null,
                 Departament.class,
-                1
+                expectedId
         );
 
         assertAll(

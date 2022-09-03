@@ -151,7 +151,7 @@ class UserControllerTest {
     @DisplayName("replace update user when successful")
     void replace_UpdateUser_WhenSuccessful(){
         UserPutRequestBody userPutRequestBody = UserPutRequestBodyCreator.createUserPutRequestBody();
-        ResponseEntity<User> userReplaced = userController.replace(userPutRequestBody);
+        ResponseEntity<Void> userReplaced = userController.replace(userPutRequestBody);
 
         assertAll(
                 () -> assertNotNull(userReplaced),
@@ -162,7 +162,7 @@ class UserControllerTest {
     @Test
     @DisplayName("delete remove user when successful")
     void delete_RemoveUser_WhenSuccessful(){
-        ResponseEntity<User> userDeleted = userController.delete(1L);
+        ResponseEntity<Void> userDeleted = userController.delete(1L);
 
         assertAll(
                 () -> assertNotNull(userDeleted),

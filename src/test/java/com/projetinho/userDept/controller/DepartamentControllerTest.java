@@ -125,7 +125,7 @@ class DepartamentControllerTest {
 
         assertDoesNotThrow(() -> departamentController.replace(departamentPutRequestBody));
 
-        ResponseEntity<Departament> actualDepartament = departamentController.replace(departamentPutRequestBody);
+        ResponseEntity<Void> actualDepartament = departamentController.replace(departamentPutRequestBody);
 
         assertAll(
                 () -> assertNotNull(actualDepartament),
@@ -138,7 +138,7 @@ class DepartamentControllerTest {
     void delete_RemoveDepartament_WhenSuccessful(){
         assertDoesNotThrow(() -> departamentController.delete(1L));
 
-        ResponseEntity<Departament> actualDepartament = departamentController.delete(1L);
+        ResponseEntity<Void> actualDepartament = departamentController.delete(1L);
 
         assertAll(
                 () -> assertNotNull(actualDepartament),
