@@ -12,7 +12,7 @@
 - Maven
 - h2 database
 
-## Algumas funcionalidades disponíveis na API
+## 💡 Algumas funcionalidades disponíveis na API
 
 -  Java models class com validações
 -  JPA repository
@@ -24,6 +24,6 @@
 -  Teste unitário de (User e Departament) para (repository, service, controller) 
 -  Teste de integraçao para (User e Departament)
 
-## Front-End (Aprendendo Angular ainda)
+## 🛠 Front-End (Aprendendo Angular ainda)
 
 A ideia é implementar o Angular para o front e o Angular Material
